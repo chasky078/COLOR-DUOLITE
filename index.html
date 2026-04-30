@@ -6,171 +6,194 @@
 <title>Color Doulite</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(180deg,#0b1220,#05070a);
+  color:white;
+  padding:18px;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, #101820, #0b0f14);
-  color: #fff;
-  padding: 18px;
+.app{
+  max-width:430px;
+  margin:auto;
 }
 
-.app {
-  max-width: 430px;
-  margin: auto;
+.header{
+  text-align:center;
+  margin-bottom:20px;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 22px;
+.header h1{
+  margin:0;
+  font-size:30px;
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 28px;
+.header p{
+  margin:6px 0 0;
+  color:#94a3b8;
+  font-size:14px;
 }
 
-.header p {
-  margin: 6px 0 0;
-  color: #9ca3af;
-  font-size: 14px;
+.card{
+  background:#111827;
+  border:1px solid #263241;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 12px 35px rgba(0,0,0,.45);
 }
 
-.card {
-  background: #17212b;
-  border: 1px solid #263241;
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+.label{
+  color:#94a3b8;
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:12px;
 }
 
-.label {
-  font-size: 13px;
-  color: #9ca3af;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: .8px;
+.material-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  font-size:24px;
+  font-weight:bold;
 }
 
-.material-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
+.fixed{
+  color:#e5e7eb;
 }
 
-.fixed {
-  color: #e5e7eb;
+input{
+  width:70px;
+  height:58px;
+  border-radius:14px;
+  border:2px solid #334155;
+  background:#020617;
+  color:#fff;
+  text-align:center;
+  font-size:26px;
+  font-weight:bold;
+  outline:none;
 }
 
-input {
-  width: 68px;
-  height: 54px;
-  border: 2px solid #334155;
-  border-radius: 12px;
-  background: #0f1720;
-  color: #fff;
-  font-size: 24px;
-  text-align: center;
-  font-weight: bold;
-  outline: none;
+input:focus{
+  border-color:#facc15;
+  box-shadow:0 0 0 4px rgba(250,204,21,.15);
 }
 
-input:focus {
-  border-color: #facc15;
+.preview{
+  margin-top:14px;
+  background:#020617;
+  color:#cbd5e1;
+  padding:13px;
+  border-radius:14px;
+  text-align:center;
+  font-size:15px;
 }
 
-.preview {
-  background: #0f1720;
-  border-radius: 12px;
-  padding: 12px;
-  text-align: center;
-  color: #cbd5e1;
-  font-size: 15px;
-  margin-bottom: 14px;
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:16px;
 }
 
-.actions {
-  display: flex;
-  gap: 10px;
+button{
+  border:none;
+  border-radius:15px;
+  padding:16px;
+  font-size:17px;
+  font-weight:bold;
 }
 
-button {
-  border: none;
-  border-radius: 14px;
-  padding: 15px;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
+.buscar{
+  flex:1;
+  background:#facc15;
+  color:#111827;
 }
 
-.buscar {
-  flex: 1;
-  background: #facc15;
-  color: #111827;
+.limpiar{
+  width:94px;
+  background:#263241;
+  color:white;
 }
 
-.limpiar {
-  width: 92px;
-  background: #263241;
-  color: #fff;
+.result{
+  margin-top:18px;
 }
 
-.result {
-  margin-top: 18px;
+.color-card{
+  background:#111827;
+  border:1px solid #263241;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 35px rgba(0,0,0,.45);
 }
 
-.color-box {
-  height: 155px;
-  border-radius: 18px;
-  border: 4px solid rgba(255,255,255,.12);
-  box-shadow: inset 0 0 30px rgba(0,0,0,.2);
+.color-box{
+  height:170px;
+  border-bottom:1px solid rgba(255,255,255,.12);
 }
 
-.info-card {
-  margin-top: 14px;
-  background: #17212b;
-  border: 1px solid #263241;
-  border-radius: 18px;
-  overflow: hidden;
+.result-title{
+  padding:15px 18px;
+  background:#0f172a;
+  color:#facc15;
+  font-size:14px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  font-weight:bold;
 }
 
-.info-title {
-  padding: 14px 16px;
-  background: #111827;
-  font-size: 15px;
-  font-weight: bold;
-  color: #facc15;
+.result-main{
+  padding:16px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #263241;
 }
 
-.info-row {
-  padding: 12px 16px;
-  border-top: 1px solid #263241;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 15px;
+.result-main span{
+  color:#94a3b8;
+  font-size:14px;
 }
 
-.info-row span:first-child {
-  color: #9ca3af;
+.result-main strong{
+  font-size:18px;
 }
 
-.error {
-  margin-top: 18px;
-  padding: 16px;
-  border-radius: 14px;
-  background: #3b1111;
-  color: #fecaca;
-  text-align: center;
-  font-weight: bold;
+.grid{
+  padding:8px 0;
+}
+
+.row{
+  padding:13px 18px;
+  border-top:1px solid #263241;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.row span{
+  color:#94a3b8;
+}
+
+.row strong{
+  text-align:right;
+}
+
+.error{
+  margin-top:18px;
+  background:#3b1111;
+  color:#fecaca;
+  border:1px solid #7f1d1d;
+  border-radius:18px;
+  padding:18px;
+  text-align:center;
+  font-weight:bold;
 }
 </style>
 </head>
@@ -181,23 +204,21 @@ button {
 
   <div class="header">
     <h1>Color Doulite</h1>
-    <p>Buscador rápido por material</p>
+    <p>Consulta rápida por material</p>
   </div>
 
   <div class="card">
-    <div class="label">Material</div>
+    <div class="label">Introduce material</div>
 
     <div class="material-row">
       <span class="fixed">3000</span>
-      <input id="p1" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="2" placeholder="00" oninput="actualizarPreview()">
+      <input id="p1" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="2" placeholder="00">
       <span class="fixed">-</span>
       <span class="fixed">00</span>
-      <input id="p2" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="3" placeholder="000" oninput="actualizarPreview()">
+      <input id="p2" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="3" placeholder="000">
     </div>
 
-    <div class="preview" id="preview">
-      Material: 300000-00000
-    </div>
+    <div class="preview" id="preview">Material: 300000-00000</div>
 
     <div class="actions">
       <button class="buscar" onclick="buscar()">BUSCAR</button>
@@ -211,29 +232,37 @@ button {
 
 <script>
 const datos = [
-  {
-    material:"300000-00004",
-    color:"ROJ",
-    desc:"MSX09180827 120TH500 D28/14 ST"
-  },
-  {
-    material:"300002-00117",
-    color:"AMA",
-    desc:"MSX09140943 120TH500 D28/14 ST"
-  }
+  {material:"300000-00004",color:"ROJ",desc:"MSX09180827 120TH500 D28/14 ST"},
+  {material:"300002-00117",color:"AMA",desc:"MSX09140943 120TH500 D28/14 ST"}
 ];
 
-function construirMaterial() {
-  let p1 = document.getElementById("p1").value.replace(/\D/g,"").padStart(2,"0");
-  let p2 = document.getElementById("p2").value.replace(/\D/g,"").padStart(3,"0");
-  return "3000" + p1 + "-00" + p2;
+const p1 = document.getElementById("p1");
+const p2 = document.getElementById("p2");
+
+p1.addEventListener("input", function(){
+  this.value = this.value.replace(/\D/g,"").slice(0,2);
+  actualizarPreview();
+  if(this.value.length === 2){
+    p2.focus();
+  }
+});
+
+p2.addEventListener("input", function(){
+  this.value = this.value.replace(/\D/g,"").slice(0,3);
+  actualizarPreview();
+});
+
+function construirMaterial(){
+  const a = p1.value.padStart(2,"0");
+  const b = p2.value.padStart(3,"0");
+  return "3000"+a+"-00"+b;
 }
 
-function actualizarPreview() {
+function actualizarPreview(){
   document.getElementById("preview").innerText = "Material: " + construirMaterial();
 }
 
-function colorBg(c) {
+function colorBg(c){
   if(c=="ROJ") return "#e53935";
   if(c=="AMA") return "#facc15";
   if(c=="VER") return "#22c55e";
@@ -245,7 +274,7 @@ function colorBg(c) {
   return "#555";
 }
 
-function nombreColor(c) {
+function nombreColor(c){
   if(c=="ROJ") return "Rojo";
   if(c=="AMA") return "Amarillo";
   if(c=="VER") return "Verde";
@@ -257,12 +286,12 @@ function nombreColor(c) {
   return c;
 }
 
-function buscar() {
+function buscar(){
   const material = construirMaterial();
   const d = datos.find(x => x.material === material);
   const res = document.getElementById("res");
 
-  if(!d) {
+  if(!d){
     res.innerHTML = `
       <div class="error">
         No encontrado<br>
@@ -274,36 +303,37 @@ function buscar() {
 
   res.innerHTML = `
     <div class="result">
-      <div class="color-box" style="background:${colorBg(d.color)}"></div>
+      <div class="color-card">
+        <div class="color-box" style="background:${colorBg(d.color)}"></div>
 
-      <div class="info-card">
-        <div class="info-title">Resultado encontrado</div>
+        <div class="result-title">Color Doulite</div>
 
-        <div class="info-row">
-          <span>Material</span>
-          <strong>${d.material}</strong>
-        </div>
-
-        <div class="info-row">
-          <span>Color</span>
+        <div class="result-main">
+          <span>Resultado</span>
           <strong>${nombreColor(d.color)} (${d.color})</strong>
         </div>
 
-        <div class="info-row">
-          <span>Descripción</span>
-          <strong>${d.desc}</strong>
+        <div class="grid">
+          <div class="row">
+            <span>Material</span>
+            <strong>${d.material}</strong>
+          </div>
+          <div class="row">
+            <span>Descripción</span>
+            <strong>${d.desc}</strong>
+          </div>
         </div>
       </div>
     </div>
   `;
 }
 
-function limpiar() {
-  document.getElementById("p1").value = "";
-  document.getElementById("p2").value = "";
+function limpiar(){
+  p1.value = "";
+  p2.value = "";
   document.getElementById("res").innerHTML = "";
   actualizarPreview();
-  document.getElementById("p1").focus();
+  p1.focus();
 }
 
 actualizarPreview();
