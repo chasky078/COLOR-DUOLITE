@@ -6,10 +6,57 @@
 <title>Doulite PRO</title>
 
 <style>
-body { background:#111; color:#fff; font-family:Arial; padding:20px;}
-input,button { width:100%; padding:15px; margin-top:10px; font-size:18px;}
-button { background:#f1c40f; border:none;}
-.color { padding:20px; text-align:center; font-size:30px;}
+body {
+  background:#111;
+  color:#fff;
+  font-family:Arial;
+  padding:20px;
+}
+
+h2 {
+  text-align:center;
+}
+
+.row {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  font-size:22px;
+  margin-top:20px;
+}
+
+input {
+  width:60px;
+  padding:10px;
+  font-size:20px;
+  text-align:center;
+  border:none;
+  border-radius:5px;
+}
+
+button {
+  width:100%;
+  padding:15px;
+  margin-top:20px;
+  font-size:18px;
+  background:#f1c40f;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.color-box {
+  width:100%;
+  height:140px;
+  margin-top:20px;
+  border-radius:10px;
+}
+
+.info {
+  margin-top:15px;
+  font-size:14px;
+}
 </style>
 </head>
 
@@ -17,42 +64,73 @@ button { background:#f1c40f; border:none;}
 
 <h2>🔍 DOULITE PRO</h2>
 
-<input id="material" placeholder="300000-00004">
+<div class="row">
+  3000
+  <input id="p1" maxlength="2" placeholder="00">
+  -
+  00
+  <input id="p2" maxlength="3" placeholder="000">
+</div>
+
 <button onclick="buscar()">BUSCAR</button>
 
 <div id="res"></div>
 
 <script>
 
+// 🔥 DATOS DE EJEMPLO (luego metemos todos)
 const datos = [
-{material:"300000-00004",color:"ROJ",desc:"MSX09180827 120TH500 D28/14 ST"}
+{
+material:"300000-00004",
+color:"ROJ",
+desc:"MSX09180827 120TH500 D28/14 ST"
+},
+{
+material:"300002-00117",
+color:"AMA",
+desc:"MSX09140943 120TH500 D28/14 ST"
+}
 ];
 
+// 🎨 COLOR VISUAL
 function colorBg(c){
-if(c=="ROJ")return "red";
-if(c=="AMA")return "yellow";
-if(c=="VER")return "green";
-if(c=="AZU")return "blue";
-if(c=="NEG")return "black";
-if(c=="BLA")return "white";
-if(c=="GRI")return "gray";
-if(c=="NAR")return "orange";
+if(c=="ROJ")return "#e74c3c";
+if(c=="AMA")return "#f1c40f";
+if(c=="VER")return "#2ecc71";
+if(c=="AZU")return "#3498db";
+if(c=="NEG")return "#2c3e50";
+if(c=="BLA")return "#ecf0f1";
+if(c=="GRI")return "#7f8c8d";
+if(c=="NAR")return "#e67e22";
 return "#555";
 }
 
+// 🔍 BUSCAR
 function buscar(){
-let m=document.getElementById("material").value.trim();
-let d=datos.find(x=>x.material==m);
+
+let p1 = document.getElementById("p1").value.padStart(2,"0");
+let p2 = document.getElementById("p2").value.padStart(3,"0");
+
+// construir material
+let material = "3000"+p1+"-00"+p2;
+
+let d = datos.find(x=>x.material===material);
 
 if(!d){
-document.getElementById("res").innerHTML="No encontrado";
+document.getElementById("res").innerHTML =
+"<div class='color-box' style='background:#555'></div><p>No encontrado</p>";
 return;
 }
 
+// mostrar resultado
 document.getElementById("res").innerHTML =
-"<div class='color' style='background:"+colorBg(d.color)+"'>"+d.color+"</div>"+
-"<p>Material: "+d.material+"</p>"+
-"<p>"+d.desc+"</p>";
+"<div class='color-box' style='background:"+colorBg(d.color)+"'></div>"+
+"<div class='info'>"+
+"<p><b>Material:</b> "+material+"</p>"+
+"<p><b>Color:</b> "+d.color+"</p>"+
+"<p>"+d.desc+"</p>"+
+"</div>";
+
 }
 
 </script>
