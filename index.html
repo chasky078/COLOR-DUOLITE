@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doulite PRO</title>
+
+<style>
+body { background:#111; color:#fff; font-family:Arial; padding:20px;}
+input,button { width:100%; padding:15px; margin-top:10px; font-size:18px;}
+button { background:#f1c40f; border:none;}
+.color { padding:20px; text-align:center; font-size:30px;}
+</style>
+</head>
+
+<body>
+
+<h2>🔍 DOULITE PRO</h2>
+
+<input id="material" placeholder="300000-00004">
+<button onclick="buscar()">BUSCAR</button>
+
+<div id="res"></div>
+
+<script>
+
+const datos = [
+{material:"300000-00004",color:"ROJ",desc:"MSX09180827 120TH500 D28/14 ST"}
+];
+
+function colorBg(c){
+if(c=="ROJ")return "red";
+if(c=="AMA")return "yellow";
+if(c=="VER")return "green";
+if(c=="AZU")return "blue";
+if(c=="NEG")return "black";
+if(c=="BLA")return "white";
+if(c=="GRI")return "gray";
+if(c=="NAR")return "orange";
+return "#555";
+}
+
+function buscar(){
+let m=document.getElementById("material").value.trim();
+let d=datos.find(x=>x.material==m);
+
+if(!d){
+document.getElementById("res").innerHTML="No encontrado";
+return;
+}
+
+document.getElementById("res").innerHTML =
+"<div class='color' style='background:"+colorBg(d.color)+"'>"+d.color+"</div>"+
+"<p>Material: "+d.material+"</p>"+
+"<p>"+d.desc+"</p>";
+}
+
+</script>
+
+</body>
+</html>
