@@ -207,6 +207,7 @@ button{
   font-size:16px;
 
   position:relative; /* 👈 para la línea superior */
+    animation: avisoFadeIn 0.35s ease-out;
   }
   .aviso-update::before{
   content:"";
@@ -250,6 +251,17 @@ button{
   line-height:1.6;
 
   list-style-type:disc;
+}
+  
+@keyframes avisoFadeIn {
+  0%{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 </style>
 </head>
@@ -517,7 +529,7 @@ let timerBusqueda = null;
 const cambiosApp = [
   "Base de datos actualizada",
   "Optimización del sistema",
-  "Mejora del indicador \"NO LLEVA DUOLITE\""
+  "Mejora animación mensaje actualización\""
 ];
 
 function mostrarAvisoUpdate(){
