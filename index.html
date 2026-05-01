@@ -234,14 +234,6 @@ const preview = document.getElementById("preview");
 let timerBusqueda = null;
 
 p1.addEventListener("input", function(){
-
-  p1.value = p1.value.replace(/\D/g,"").slice(0,2);
-  actualizarPreview();
-
-  if(p1.value.length === 2){
-    p2.focus();
-  }
-});, function(){
   p1.value = p1.value.replace(/\D/g,"").slice(0,2);
   actualizarPreview();
 
@@ -251,19 +243,6 @@ p1.addEventListener("input", function(){
 });
 
 p2.addEventListener("input", function(){
-
-  p2.value = p2.value.replace(/\D/g,"").slice(0,3);
-  actualizarPreview();
-
-  clearTimeout(timerBusqueda);
-
-  if(p2.value.length === 3){
-    timerBusqueda = setTimeout(function(){
-      buscar();
-      p2.blur();
-    }, 500);
-  }
-});, function(){
   p2.value = p2.value.replace(/\D/g,"").slice(0,3);
   actualizarPreview();
 
