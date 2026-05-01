@@ -97,8 +97,7 @@ button{
 .result{margin-top:18px}
 .color-card{padding:0;overflow:hidden}
 
-.color-box{
-  @keyframes pop {
+@keyframes pop {
   0%{transform:scale(0.95);opacity:0;}
   100%{transform:scale(1);opacity:1;}
 }
@@ -106,11 +105,18 @@ button{
 .color-card{
   animation:pop 0.2s ease;
 }
+
+.color-box{
   height:260px;
-  margin:12px;
-  border-radius:22px;
-  box-shadow:0 10px 30px rgba(0,0,0,.6), inset 0 0 20px rgba(255,255,255,.12);
-  border:3px solid rgba(255,255,255,.12);
+  margin:14px;
+  border-radius:18px;
+  border:8px solid #334155;
+  outline:3px solid rgba(255,255,255,0.35);
+  outline-offset:-14px;
+  box-shadow:
+    0 16px 36px rgba(0,0,0,0.75),
+    inset 0 0 30px rgba(255,255,255,0.14),
+    inset 0 0 0 4px rgba(0,0,0,0.28);
 }
 
 .result-title{
