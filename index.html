@@ -245,7 +245,8 @@ function colorBg(c){
   if(c==="AMA") return "#facc15";
   if(c==="VER") return "#22c55e";
   if(c==="AZU") return "#2563eb";
-  if(c==="NEG") return "#020617";
+  if(c==="NEG") return "#000000";
+  if(c==="NEG_BORDER") return "#1f2937";
   if(c==="BLA") return "#f8fafc";
   if(c==="GRI") return "#6b7280";
   if(c==="NAR") return "#f97316";
@@ -315,8 +316,10 @@ function buscar(){
   res.innerHTML = `
     <div class="result">
       <div class="color-card">
-        <div class="color-box" style="background:${colorBg(d.color)}"></div>
-
+        <div class="color-box" style="
+  background:${colorBg(d.color)};
+  ${d.color==="NEG" ? "border:2px solid #475569; box-shadow:0 0 0 3px rgba(255,255,255,0.08), inset 0 0 25px rgba(255,255,255,0.15);" : ""}
+"></div>
         <div class="result-title">Datos del material</div>
 
         <div class="row"><span>Material</span><strong>${d.material}</strong></div>
