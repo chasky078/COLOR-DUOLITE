@@ -161,6 +161,29 @@ button{
   text-align:center;
   font-weight:bold;
 }
+  .aviso-update{
+  display:none;
+  margin:16px 0;
+  padding:16px;
+  border-radius:18px;
+  background:#0f172a;
+  border:1px solid #334155;
+  color:#f8fafc;
+  box-shadow:0 10px 25px rgba(0,0,0,0.35);
+  font-size:15px;
+}
+
+.aviso-update strong{
+  display:block;
+  color:#facc15;
+  font-size:17px;
+  margin-bottom:8px;
+}
+
+.aviso-update ul{
+  margin:8px 0 0;
+  padding-left:20px;
+}
 </style>
 </head>
 
@@ -191,7 +214,7 @@ button{
       <button class="limpiar" type="button" onclick="limpiar()">Limpiar</button>
     </div>
   </div>
-
+<div id="avisoUpdate" class="aviso-update"></div>
   <div id="res"></div>
 
 </div>
@@ -422,6 +445,31 @@ const res = document.getElementById("res");
 const preview = document.getElementById("preview");
 
 let timerBusqueda = null;
+  const versionApp = "1.1";
+
+const cambiosApp = [
+  "🎨 Ajustes visuales del cuadro de color",
+  "➕ Nuevos materiales añadidos",
+  "⚙️ Mejoras de funcionamiento"
+];
+
+function mostrarAvisoUpdate(){
+  const ultimaVersionVista = localStorage.getItem("versionAppVista");
+
+  if(ultimaVersionVista !== versionApp){
+    const aviso = document.getElementById("avisoUpdate");
+
+    aviso.innerHTML = `
+      <strong>🆕 Actualización aplicada</strong>
+      <ul>
+        ${cambiosApp.map(cambio => `<li>${cambio}</li>`).join("")}
+      </ul>
+    `;
+
+    aviso.style.display = "block";
+    localStorage.setItem("versionAppVista", versionApp);
+  }
+}
 
 p1.addEventListener("input", function(){
   p1.value = p1.value.replace(/\D/g,"").slice(0,2);
@@ -609,7 +657,7 @@ function limpiar(){
 }
 
 actualizarPreview();
-
+mostrarAvisoUpdate();
 setTimeout(() => {
   p1.focus();
 }, 300);
