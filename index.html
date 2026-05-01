@@ -315,6 +315,9 @@ function parseDesc(desc){
 }
 
 function buscar(){
+  if(p1.value.length < 2 || p2.value.length < 3){
+  return;
+  }
   clearTimeout(timerBusqueda);
 
   const material = construirMaterial();
@@ -323,7 +326,8 @@ function buscar(){
   if(!d){
     res.innerHTML = `
       <div class="error">
-        No encontrado<br>
+        No encontrado ❌<br>
+Revisa el material<br>
         <small>${material}</small>
       </div>
     `;
@@ -331,11 +335,17 @@ function buscar(){
   }
 
   const info = parseDesc(d.desc);
+  if(navigator.vibrate){
+  navigator.vibrate(50);
+  }
 
   res.innerHTML = `
     <div class="result">
       <div class="color-card">
-        <div class="color-box" style="background:${colorBg(d.color)}"></div>
+        <div class="color-box" style="
+  background:${colorBg(d.color)};
+  ${d.color==="NEG" ? "border:3px solid #64748b;" : ""}
+"></div>
 
         <div class="result-title">Datos del material</div>
 
