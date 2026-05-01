@@ -225,9 +225,27 @@ p1.addEventListener("input", function(){
   }
 });
 
+let timerBusqueda;
+
 p2.addEventListener("input", function(){
+
   p2.value = p2.value.replace(/\D/g,"").slice(0,3);
+
   actualizarPreview();
+
+  // cancelar si sigue escribiendo
+  clearTimeout(timerBusqueda);
+
+  // solo cuando hay 3 cifras
+  if(p2.value.length === 3){
+
+    timerBusqueda = setTimeout(() => {
+      buscar();
+      p2.blur();
+    }, 500);
+
+  }
+
 });
 
 function construirMaterial(){
