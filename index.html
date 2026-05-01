@@ -227,11 +227,26 @@ p1.addEventListener("input", function(){
 
 let timerBusqueda;
 
+let timerBusqueda;
+
 p2.addEventListener("input", function(){
 
   p2.value = p2.value.replace(/\D/g,"").slice(0,3);
 
   actualizarPreview();
+
+  clearTimeout(timerBusqueda);
+
+  if(p2.value.length === 3){
+
+    timerBusqueda = setTimeout(() => {
+      buscar();
+      p2.blur();
+    }, 500);
+
+  }
+
+});
 
   // cancelar si sigue escribiendo
   clearTimeout(timerBusqueda);
