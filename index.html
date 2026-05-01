@@ -286,38 +286,35 @@ function parseDesc(desc){
     const ancho = medidas.substring(0,4) || "-";
     const largo = medidas.substring(4,8) || "-";
 
-    // 🔥 LÍMITE ELÁSTICO
+    let espesor = "-";
     let limite = "-";
+
     if(partes[1] && partes[1].includes("TH")){
-      limite = partes[1].split("TH")[1];
+      const th = partes[1].split("TH");
+      espesor = "0," + th[0].slice(0,2);
+      limite = th[1];
     }
 
-    // 🔥 DIFERENCIAL / ESTAÑADO / TFS
     let diferencial = "-";
     let estanado = "-";
 
     const campo = partes[2] || "";
 
     if(campo.includes("ECCS")){
-      // 💥 CASO TFS
       estanado = "TFS";
       diferencial = "-";
     }
     else if(campo.includes("/")){
-      // D28/14
       diferencial = campo.split("/")[0].replace("D","");
       estanado = campo.split("/")[1];
     }
     else if(campo.startsWith("E")){
-      // E28
       estanado = campo.replace("E","");
     }
     else if(campo.startsWith("D")){
-      // D28
       diferencial = campo.replace("D","");
     }
 
-    // 🔥 ACABADO
     const acabadoRaw = partes[3] || "-";
     const acabado = acabadoRaw === "ST" ? "Piedra" : acabadoRaw;
 
@@ -325,6 +322,7 @@ function parseDesc(desc){
       tipoCorte,
       ancho,
       largo,
+      espesor,
       limite,
       diferencial,
       estanado,
@@ -336,6 +334,7 @@ function parseDesc(desc){
       tipoCorte:"-",
       ancho:"-",
       largo:"-",
+      espesor:"-",
       limite:"-",
       diferencial:"-",
       estanado:"-",
@@ -343,13 +342,13 @@ function parseDesc(desc){
     };
   }
 }
-}
 
 function buscar(){
-  if(p1.value.length < 2 || p2.value.length < 3){
-  return;
-  }
   clearTimeout(timerBusqueda);
+
+  if(p1.value.length < 2 || p2.value.length < 3){
+    return;
+  }
 
   const material = construirMaterial();
   const d = datos.find(x => x.material === material);
@@ -358,7 +357,7 @@ function buscar(){
     res.innerHTML = `
       <div class="error">
         No encontrado ❌<br>
-Revisa el material<br>
+        Revisa el material<br>
         <small>${material}</small>
       </div>
     `;
@@ -366,17 +365,19 @@ Revisa el material<br>
   }
 
   const info = parseDesc(d.desc);
+
   if(navigator.vibrate){
-  navigator.vibrate(50);
+    navigator.vibrate(50);
   }
 
   res.innerHTML = `
     <div class="result">
       <div class="color-card">
         <div class="color-box" style="
-  background:${colorBg(d.color)};
-  ${d.color==="NEG" ? "border:3px solid #64748b;" : ""}
-"></div>
+          background:${colorBg(d.color)};
+          ${d.color==="NEG" ? "border:4px solid #94a3b8;" : ""}
+          ${d.color==="BLA" ? "border:4px solid #94a3b8;" : ""}
+        "></div>
 
         <div class="result-title">Datos del material</div>
 
@@ -404,7 +405,8 @@ function limpiar(){
 }
 
 actualizarPreview();
-  setTimeout(() => {
+
+setTimeout(() => {
   p1.focus();
 }, 300);
 </script>
