@@ -228,18 +228,12 @@ const datos = [
 
 const p1 = document.getElementById("p1");
 const p2 = document.getElementById("p2");
-  let hayResultado = false;
 const res = document.getElementById("res");
 const preview = document.getElementById("preview");
 
 let timerBusqueda = null;
 
 p1.addEventListener("input", function(){
-
-  if(hayResultado){
-    limpiar();
-    hayResultado = false;
-  }
 
   p1.value = p1.value.replace(/\D/g,"").slice(0,2);
   actualizarPreview();
@@ -257,11 +251,6 @@ p1.addEventListener("input", function(){
 });
 
 p2.addEventListener("input", function(){
-
-  if(hayResultado){
-    limpiar();
-    hayResultado = false;
-  }
 
   p2.value = p2.value.replace(/\D/g,"").slice(0,3);
   actualizarPreview();
@@ -433,7 +422,6 @@ function buscar(){
       </div>
     </div>
   `;
-  hayResultado = true;
 }
 
 function limpiar(){
